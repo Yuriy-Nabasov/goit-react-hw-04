@@ -1,54 +1,37 @@
 import { useState, useEffect } from "react";
 import Section from "../Section/Section";
 import Container from "../Container/Container";
-import Heading from "../Heading/Heading";
-import ContactForm from "../ContactForm/ContactForm";
-import SearchBox from "../SearchBox/SearchBox";
-import ContactList from "../ContactList/ContactList";
-import initialContacts from "../contactData.json";
-import Notification from "../Notification/Notification";
+// import Heading from "../Heading/Heading";
 
-import { Analytics } from "@vercel/analytics/react";
-
+// import { Analytics } from "@vercel/analytics/react";
+import SearchBar from "../SearchBar/SearchBar";
+import { fetchArticles } from "../../articleService";
 import "./App.css";
+import ImageGallery from "../ImageGallery/ImageGallery";
+import Loader from "../Loader/Loader";
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
-    const savedData = localStorage.getItem("myContacts");
-    return savedData ? JSON.parse(savedData) : initialContacts;
-  });
+  const [articles, setArticles] = useState([]);
 
-  const [myFilter, setMyFilter] = useState("");
-
-  const addContact = (newContact) => {
-    setContacts((prevContacts) => {
-      return [...prevContacts, newContact];
-    });
+  const handleSearch = async (topic) => {
+    try {
+      const data = await fetchArticles(topic);
+      setArticles(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  const deleteContact = (contactId) => {
-    setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => contact.id !== contactId);
-    });
-  };
-
-  const visibleContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(myFilter.toLocaleLowerCase())
-  );
-
-  useEffect(() => {
-    localStorage.setItem("myContacts", JSON.stringify(contacts));
-  }, [contacts]);
 
   return (
     <Section>
       <Container>
-        <Heading title="Phonebook" bottom tag={`h1`} />
-        <ContactForm onAdd={addContact} />
-        <SearchBox value={myFilter} onFilter={setMyFilter} />
-        <div>{contacts.length === 0 && <Notification />}</div>
-        <ContactList contacts={visibleContacts} onDelete={deleteContact} />
-        <Analytics />
+        {/* <Heading title="Image search" bottom tag={`h1`} /> */}
+        {/* <SearchBox value={myFilter} onFilter={setMyFilter} /> */}
+        <SearchBar onSearch={handleSearch} />
+        {/* <Loader /> */}
+        <ImageGallery items={articles} />
+        {/* <Analytics /> */}
       </Container>
     </Section>
   );
