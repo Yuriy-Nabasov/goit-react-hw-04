@@ -7,7 +7,6 @@ export default function SearchBar({ onSearch }) {
       initialValues={{ topic: "" }}
       onSubmit={(values, actions) => {
         onSearch(values.topic);
-        // console.log(values.topic);
         actions.resetForm();
       }}
     >
@@ -16,8 +15,8 @@ export default function SearchBar({ onSearch }) {
           className={css.input}
           type="text"
           name="topic"
-          // autocomplete="off"
-          // autofocus
+          autoComplete="on"
+          autoFocus
           placeholder="Search images and photos"
         />
         <button className={css.button} type="submit">

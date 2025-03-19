@@ -1,15 +1,9 @@
 import { PulseLoader } from "react-spinners";
+import css from "./Loader.module.css";
 
 export default function Loader() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
+    <div className={css.wrap}>
       <PulseLoader
         color="#36d7b7" // Колір лоадера
         size={15} // Розмір лоадера

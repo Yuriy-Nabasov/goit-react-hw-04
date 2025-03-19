@@ -2,16 +2,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  justify-content: center; /* Центруємо картки по горизонталі */
-  margin: 0 auto; /* Додаємо автоматичні відступи для вирівнювання */
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .card {
   width: calc((100% - 48px) / 3);
   /* width: 360px;  */
-  border: 1px solid #ddd; /* Рамка для візуалізації */
-  border-radius: 8px; /* Закруглені кути */
-
+  border: 1px solid #ddd;
+  border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

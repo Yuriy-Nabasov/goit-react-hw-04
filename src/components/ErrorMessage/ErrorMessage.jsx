@@ -1,3 +1,3 @@
 export default function ErrorMassage() {
-  return;
+  return <>Whoops there was an error please reload...</>;
 }

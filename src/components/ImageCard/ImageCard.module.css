@@ -1,13 +1,13 @@
 .gallery-link {
   display: flex;
-  flex-direction: column; /* Вертикальне розташування елементів */
+  flex-direction: column;
   width: 100%;
-  position: relative; /* Відносне позиціонування для коректного вирівнювання */
+  position: relative;
 }
 
 .img {
-  width: 100%; /* Зображення займає всю ширину картки */
-  object-fit: cover; /* Обрізаємо зображення, зберігаючи пропорції */
+  width: 100%;
+  object-fit: cover;
   height: 152px;
 }
 
