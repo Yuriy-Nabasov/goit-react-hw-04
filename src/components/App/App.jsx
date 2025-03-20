@@ -10,7 +10,7 @@ import "./App.css";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import Loader from "../Loader/Loader";
 import ErrorMassage from "../ErrorMessage/ErrorMessage";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import Modal from "react-modal";
 import ImageModal from "../ImageModal/ImageModal";
@@ -31,9 +31,9 @@ export default function App() {
     setSearchTerm(`${topic}/${Date.now()}`);
     setPage(1);
     setArticles([]);
-    if (topic === ``) {
-      toast.error("Please enter keyword!");
-    }
+    // if (topic === ``) {
+    //   toast.error("Please enter keyword!");
+    // }
   };
 
   useEffect(() => {
